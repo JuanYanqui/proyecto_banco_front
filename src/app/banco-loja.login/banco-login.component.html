@@ -1,0 +1,43 @@
+<div class="login-panel">
+  <button class="btn-home" (click)="goHome()" title="Ir al inicio">
+    <i class="fas fa-home"></i>
+  </button>
+  <img src="../../assets/img/bancoloja.png" alt="Banco de Loja" class="logo">
+
+  <div class="login-content">
+    <div class="left">
+      <h2 style="color: #7c7b7b; font-family: sans-serif;">Banca Electrónica</h2>
+      <h3 style="color: #7c7b7b; font-family: sans-serif;">Bienvenidos</h3>
+      <p style="color: #7c7b7b; font-family: sans-serif;">
+        A la Banca Electrónica del Banco de Loja, trabajamos de forma continua
+        para garantizar la seguridad de nuestros clientes, por ello hemos
+        implemnetado un nuevo sistema de seguridad. Si Ud. no tiene clave de
+        acceso a este canal, solicítela en cualquiera de nuestras oficinas.
+      </p>
+
+      <div class="info-links">
+        <div><i class="fa-solid fa-bars"></i><span style="color: #7c7b7b;font-family: sans-serif;">Ayuda</span></div>
+        <div><i class="fas fa-shield-alt"></i><span style="color: #7c7b7b;font-family: sans-serif;">Seguridad</span>
+        </div>
+        <div><i class="fas fa-phone"></i><span style="color: #7c7b7b;font-family: sans-serif;">Contacto</span></div>
+      </div>
+
+    </div>
+
+    <div class="right">
+      <input type="text" placeholder="Usuario" [(ngModel)]="usuario.username" pattern="[A-Za-z0-9]+"
+        title="Solo se permiten letras y números">
+      <input type="password" placeholder="Clave" [(ngModel)]="usuario.password" pattern="[A-Za-z0-9]+"
+        title="Solo se permiten letras y números">
+      <button (click)="login()">
+        <i class="fas fa-check"></i> Ingresar
+      </button>
+
+      <div class="enlaces">
+        <div class="enlace-panel">¿Olvidó su clave?</div>
+        <div class="enlace-panel">¿Olvidó su usuario?</div>
+        <div class="enlace-panel">Activar Banca Electrónica</div>
+      </div>
+    </div>
+  </div>
+</div>

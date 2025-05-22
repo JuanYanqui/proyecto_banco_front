@@ -1,0 +1,90 @@
+<!-- NAVBAR -->
+<div
+  style="background-color: #e0e0e0; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <div class="logo-container" style="display: flex; align-items: center;">
+    <img src="../../assets/img/bancoloja.png" alt="Banco de Loja" class="logo" style="width: 350px; height: 70px;">
+  </div>
+  <div style="text-align: right; font-size: 14px;font-family: sans-serif;">
+    <strong>{{usuarioName}} - {{usuarioCedula}}</strong><br />
+<small style="color: #7c7b7b;font-family: sans-serif;">Último acceso: {{ today | date:'yyyy/MM/dd - HH:mm:ss' }}</small>
+
+  </div>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<!-- CONTENIDO PRINCIPAL -->
+<div style="display: flex; height: 100vh; font-family: Arial, sans-serif;">
+
+  <!-- SIDEBAR -->
+  <div
+    style="width: 240px; background: #e0e0e0; color: rgb(103, 103, 103); padding: 0; display: flex; flex-direction: column;">
+    <h3 style="margin: 0; padding: 15px; background: #e0e0e0; text-align: center;">Menú</h3>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Posición
+        Consolidada</li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Campañas</li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Cuentas</li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Créditos</li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Consultas</li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Transferencias
+      </li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Pago de servicios
+      </li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Servicios
+        bancarios</li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Personalización
+      </li>
+      <li style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">Contáctenos</li>
+      <li (click)="exit();"
+        style="padding: 12px 20px; border-bottom: 1px solid rgb(103, 103, 103); cursor: pointer;"
+        onmouseover="this.style.background='#2f4c72'" onmouseout="this.style.background='transparent'">
+        Salir Inicio
+      </li>
+    </ul>
+  </div>
+
+  <!-- TABLA -->
+  <div style="flex: 1; padding: 30px;">
+    <h2 style="color: #1e3a5f;">Posición Consolidada</h2>
+    <div style="overflow-x: auto;">
+      <table
+        style="width: 100%; min-width: 600px; border-collapse: collapse; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 14px;">
+        <thead style="background-color: #a89a77; color: white;">
+          <tr>
+            <th style="padding: 10px;">Tipo Cliente</th>
+            <th style="padding: 10px;">Tipo Cuenta</th>
+            <th style="padding: 10px;">No. Cuenta</th>
+            <th style="padding: 10px;">Saldo Contable</th>
+            <th style="padding: 10px;">Saldo Disponible</th>
+            <th style="padding: 10px;">Estado</th>
+            <th style="padding: 10px;">Retenciones</th>
+            <th style="padding: 10px;">Autorizaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Iterar sobre las cuentas -->
+          <tr *ngFor="let cuenta of listCuentas" style="background-color: #ffffff; text-align: center;">
+            <td style="padding: 10px;">{{ cuenta.tipoCliente }}</td>
+            <td style="padding: 10px;">{{ cuenta.tipoCuenta }}</td>
+            <td style="padding: 10px;"><a style="color: #007bff; text-decoration: none;">{{ cuenta.nroCuenta }}</a></td>
+            <td style="padding: 10px;">${{ cuenta.saldoContable | number:'1.2-2' }}</td>
+            <td style="padding: 10px;">${{ cuenta.saldoDisponible | number:'1.2-2' }}</td>
+            <td style="padding: 10px;">{{ cuenta.estado }}</td>
+            <td style="padding: 10px;">${{ cuenta.retenciones | number:'1.2-2' }}</td>
+            <td style="padding: 10px;">${{ cuenta.autorizacion | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

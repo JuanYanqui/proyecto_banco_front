@@ -1,0 +1,54 @@
+<div class="login-panel">
+    <button class="btn-home" (click)="goHome()" title="Ir al inicio">
+        <i class="fas fa-home"></i>
+    </button>
+
+    <img src="../../assets/img/bancoloja.png" alt="Banco de Loja" class="logo">
+
+    <!-- NUEVO TÍTULO EN VERDE -->
+    <h2 class="title-acceso">ACCESO BANCA ELECTRÓNICA</h2>
+
+    <!-- TEXTO DE BIENVENIDA -->
+    <div class="text-and-form">
+        <label for="security-question" class="welcome-text">Bienvenido {{usuarioName}}:</label>
+
+        <form (ngSubmit)="onSubmit()">
+            <!-- PREGUNTA DE SEGURIDAD -->
+            <div class="form-group full-width">
+                <label for="security-question" class="question-label">Pregunta de seguridad:</label>
+                <input type="text" id="security-question" class="full-width-input"
+                    [value]="this.preguntas.nombrePregunta" disabled />
+
+                <div class="input-with-button">
+                    <input type="text" class="full-width-input" placeholder="Respuesta" [(ngModel)]="answer"
+                        name="answer" required />
+                    <button type="button" class="circle-btn" title="Cambiar pregunta" (click)="changePregunta()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+
+                <div *ngIf="showError" class="error">
+                    Por favor responda la pregunta de seguridad.
+                </div>
+            </div>
+
+            <!-- SELECCIÓN DE IMAGEN -->
+            <div class="image-selection">
+                <p class="label">Seleccione la imagen asociada:</p>
+                <div class="images">
+                    <div class="image-option" *ngFor="let img of listFotos"
+                        [class.selected]="selectedImage === img" (click)="selectImage(img)">
+                        <img [src]="img.imageSrc" [alt]="img.nombreFoto" />
+                        <p class="image-label">{{ img.nombreFoto }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <button type="submit" class="login-btn">Ingresar
+                    <i class="fas fa-check"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
